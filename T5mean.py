@@ -29,7 +29,7 @@ resetTheScreen = 0
 def looking():
     global resetTheScreen
     if resetTheScreen == 500:
-        os.system("clear")
+        os.system("cls")
         art()
         print("Found: \n" + founds, end="")
         print("\033[31m_______________________________________________________")
@@ -80,9 +80,9 @@ except:
     print("Hint: don't forget to write the file's extension ^_^")
     exit()
 
-if checkServerStatus.getcode() != 404:
+if checkServerStatus.getcode() == 200:
     print("URL: " + url + "\033[32m "+ "(" + str(checkServerStatus.getcode()) + ")")
-    time.sleep(1.5)
+#     time.sleep(1.5)
 else:
     print("Page not found 404")
     exit()
@@ -94,8 +94,8 @@ counter = 0
 for x in openFile:
     try:
         connectToUrl = urllib.request.urlopen(url + x)
-        if connectToUrl.getcode() != 404:
-            os.system("clear")
+        if connectToUrl.getcode() == 200:
+            os.system("cls")
             
             colorsUrl = "\033[32m" + url
             colorsPathsFound = "\033[31m" + x
